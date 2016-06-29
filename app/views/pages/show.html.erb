@@ -1,0 +1,61 @@
+<% if !flash[:notice].blank? %>
+	<div class="notice">
+		<%= flash[:notice] %>
+	</div>
+<% end %>
+
+<%= link_to("<<back to the list", { :action => 'index'}, :class => 'back-link') %>
+<div>
+		<h2> show page</h2>
+	<table summary="page detail view">
+
+<tr>
+	
+			<th> Subject Id</th>
+			<td><%= @page.subject_id %></td>
+</tr>			
+
+
+
+<tr>
+	
+			<th> name</th>
+			<td><%= @page.name%></td>
+</tr>			
+
+
+<tr>
+	
+			<th> permalink</th>
+			<td><%= @page.permalink %></td>
+</tr>			
+
+
+<tr>
+			<th> position</th>
+			<td><%= @page.position%></td>
+
+</tr>
+<tr>
+			<th> visible ?</th>
+			<td><%= @page.visible ? 'true' : 'False' %></td>
+
+</tr>
+
+<tr>
+			<th> created at </th>
+			<td><%= @page.created_at %></td>
+
+</tr>
+
+<tr>
+			<th> updated at</th>
+			<td><%= @page.updated_at %></td>
+
+</tr>
+
+
+
+
+	</table>
+</div>

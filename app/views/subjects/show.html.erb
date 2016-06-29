@@ -1,0 +1,44 @@
+<% if !flash[:notice].blank? %>
+	<div class="notice">
+		<%= flash[:notice] %>
+	</div>
+<% end %>
+
+<%= link_to("<<back to the list", { :action => 'index'}, :class => 'back-link') %>
+<div>
+		<h2> show subject</h2>
+	<table summary="subject detail view">
+<tr>
+	
+			<th> name</th>
+			<td><%= @subject.name%></td>
+</tr>			
+
+<tr>
+			<th> position</th>
+			<td><%= @subject.position%></td>
+
+</tr>
+<tr>
+			<th> visible ?</th>
+			<td><%= @subject.visible ? 'true' : 'False' %></td>
+
+</tr>
+
+<tr>
+			<th> created at </th>
+			<td><%= @subject.created_at %></td>
+
+</tr>
+
+<tr>
+			<th> updated at</th>
+			<td><%= @subject.updated_at %></td>
+
+</tr>
+
+
+
+
+	</table>
+</div>

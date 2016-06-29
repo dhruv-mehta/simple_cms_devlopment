@@ -1,6 +1,6 @@
 class CreateSectionEdits < ActiveRecord::Migration
   def up
-    create_table :section_edits, :id =>false do |t|
+    create_table :section_edits  do |t|
     	t.references :admin_user
     	t.references :section
     	t.string :summary

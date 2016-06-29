@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20160628121354) do
   add_index "pages", ["permalink"], name: "index_pages_on_permalink", using: :btree
   add_index "pages", ["subject_id"], name: "index_pages_on_subject_id", using: :btree
 
-  create_table "section_edits", id: false, force: :cascade do |t|
+  create_table "section_edits", force: :cascade do |t|
     t.integer  "admin_user_id", limit: 4
     t.integer  "section_id",    limit: 4
     t.string   "summary",       limit: 255
