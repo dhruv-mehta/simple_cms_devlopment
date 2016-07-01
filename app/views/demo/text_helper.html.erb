@@ -1,0 +1,48 @@
+<% 
+text= "this is some long text which describe over my self and \n
+and what i am loking for and about the organizaton in which i am working .\n\n it reambles on and on and on.\n\n untill we get to the last line"
+%>
+
+<h2>word_wrap</h2>
+<%= word_wrap(text, :line_width => 30) %>
+<hr/>
+<h2>simple _formatt </h2>
+<%= simple_format(text) %>
+<hr/ >
+ 
+<h2>simple format + word_wrap</h2>
+<%= simple_format(word_wrap(text, :line_width => 30)) %>
+<hr />
+
+<h2>truncate </h2>
+<%= truncate(text, :length => 40 , :omission => "...") %>
+<hr/ >
+
+<h2>excerpt </h2>
+<%= excerpt(text,'includes' , :radious => 7 , :omission => "...") %>
+<hr/ >
+
+
+
+<h2>highlights</h2>
+<%= highlight(text,  "organizaton") %>
+<hr/ >
+<%= highlight(text,  ['describe' , 'dhruv'], :highlighter => '<em>\1</em>') %>
+<hr />
+
+<h2>pluralize </h2>
+<%= "student" .pluralize %><br />
+<%= "ox" .pluralize %>
+<br/>
+
+<% [0 ,1 ,20].each do |n| %>
+	<%= pluralize(n , 'product')%><br/>
+		<%= pluralize(n , 'octopus')%><br/>
+			<%= pluralize(n , 'snipe', 'snope')%><br/>
+<% end %>
+<hr />
+
+<h2>cycle</h2>
+<% 5.times do %>
+	<%= cycle('red', 'green', 'blue') %><br />
+<%end%>

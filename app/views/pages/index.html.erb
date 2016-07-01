@@ -1,9 +1,10 @@
+<!--
 <% if !flash[:notice].blank? %>
 	<div class="notice">
 		<%= flash[:notice] %>
 	</div>
-<% end %>
-
+ <% end %>
+ -->
 <div calss = "page index" >
 
 <h2>pages </h2>
@@ -14,8 +15,7 @@
 <th>Subject id</th>
 <th>Page</th>
 <th>Visible</th>
-<th>permalink<th>
-<th>Pages</th>
+<th>permalink</th>
 <th>Actions</th>
 </tr>
 <% @page.each  do |page| %>
@@ -23,10 +23,10 @@
 <td><%= page.position %></td>
 <td><%=  page.subject_id %></td>
 <td><%= page.name %></td>
+
+<td class="center"><%= status_tag(page.visible)  %></td>
 <td><%= page.permalink %></td>
 
-<td class="center"><%= page.visible ? 'yes' : 'No' %></td>
-<td class="center"><%= page.sections.size %></td>
 <td class="actions">
 <%= link_to("Show", {:action => 'show' , :id => page.id}, :class => 'action show')%>
 <%= link_to("Edit",{:action => 'edit' , :id => page.id}, :class => 'action edit') %>

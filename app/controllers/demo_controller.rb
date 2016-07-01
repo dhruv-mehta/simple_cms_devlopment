@@ -1,8 +1,6 @@
 class DemoController < ApplicationController
-	layout false
+	layout 'application'
   def index	
-
-  	
   end
 
   def hello
@@ -17,5 +15,9 @@ class DemoController < ApplicationController
   def change
   	
   	redirect_to(:controller => 'demo' , :action => 'index')
+  end
+
+  def text_helper
+    
   end
 end

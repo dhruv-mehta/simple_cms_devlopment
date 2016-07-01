@@ -6,3 +6,12 @@
 
 
 <%= link_to("hello with the parameters",{:action => 'hello', :page =>5 , :id => 20}) %>
+
+<%= link_to("RoAr" , '#', :onclick => "jsRoar('javascript');return true;") %>
+
+<%=javascript_tag("jsRoar('rails');") %>
+
+<% name="dhruv" %>
+<% name= "sorry!'); alert('i hacked you!!" %>
+
+<%= link_to("Roar" ,'#' , :onclick => "jsRoar('#{j(name)}');return true;") %>

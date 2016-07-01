@@ -1,19 +1,20 @@
 <%= link_to("<<back to the list", { :action => 'index'}, :class => 'back-link') %>
 <div class="page new">
-<h2>Create Subject</h2>
+<h2>Create page</h2>
 	
 <%= form_for( :page , :url => {:action => 'create'}) do |f| %>
 <table summary="page form fields">
 
 <tr>
-		<th>Subject Id</th>
-		<td><%= f.text_field(:subject_id) %></td>
+<%= puts @subjects %>
+		<th><%= f.label :subject_id, "Subjects" %></th>
+		<td><%= f.select(:subject_id, @subjects.map { |s| [s.name ,s.id]  }) %></td>
 
 </tr>
 
 	
 <tr>
-		<th>name</th>
+		<th><%= f.label :name, "Name" %></th>
 		<td><%= f.text_field(:name) %></td>
 
 </tr>
@@ -21,21 +22,21 @@
 
 
 <tr>
-		<th>Permalink</th>
+		<th><%= f.label :permalink, "Parmalink" %></th>
 		<td><%= f.text_field(:permalink) %></td>
 
 </tr>
 
 <tr>
-		<th>position</th>
-		<td><%= f.text_field(:position) %></td>
+		<th><%= f.label :position, "Position" %></th>
+		<td><%= f.select(:position , 1..@page_count) %></td>
 
 </tr>
 
 
 <tr>
-		<th>visible</th>
-		<td><%= f.text_field(:visible) %></td>
+		<th><%= f.label :visible, "Visible" %></th>
+		<td><%= f.check_box :visible %></td>
 
 </tr>
 

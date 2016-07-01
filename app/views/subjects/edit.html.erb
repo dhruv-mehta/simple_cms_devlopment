@@ -3,29 +3,10 @@
 <h2>update Subject</h2>
 	
 <%= form_for( :subject , :url => {:action => 'update' , :id => @subject.id}) do |f| %>
-<table summary="subject form fields">
-	
-<tr>
-		<th>name</th>
-		<td><%= f.text_field(:name) %></td>
-
-</tr>
 
 
-<tr>
-		<th>position</th>
-		<td><%= f.text_field(:position) %></td>
-
-</tr>
-
-
-<tr>
-		<th>visible</th>
-		<td><%= f.text_field(:visible) %></td>
-
-</tr>
-
-</table>
+<%= render(:partial => "form", :locals => {:f =>f}) %>
+ 
 <div class="form-buttons">
 		<%= submit_tag("update  subject") %>
 </div>

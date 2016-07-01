@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   
-  layout false
+  layout "admin"
 
   def index
     @page=Page.sorted
@@ -12,23 +12,32 @@ class PagesController < ApplicationController
 
   def new
     @page=Page.new(:name =>'default', :visible => 'false')
+    @page_count=Page.count + 1
+    @subjects = Subject.order('position ASC')
+    
   end
 
   def create
       @page = Page.new(page_params)
+       @page_count=Page.count + 1
+       @subjects = Subject.order('position ASC')
 
             if @page.save
 
               flash[:notice]= "record #{@page.name} saved successfully......"
               redirect_to(:action => 'index')
             else
-
+              @page_count=Page.count
+              @subjects = Subject.order('position ASC')
               render('new')
             end 
   end
 
   def edit
     @page=Page.find(params[:id])
+    @page_count=Page.count
+    @subjects = Subject.order('position ASC')
+
   end
 
    def update
@@ -41,7 +50,8 @@ class PagesController < ApplicationController
 
               redirect_to(:action => 'show' , :id => @page.id)
             else
-
+              @page_count=Page.count
+              @subjects = Subject.order('position ASC')  
               render('new')
             end 
   end

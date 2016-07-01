@@ -1,6 +1,6 @@
 class SectionController < ApplicationController
    
-  layout false
+  layout "admin"
 
   def index
     @section=Section.sorted
@@ -12,23 +12,28 @@ class SectionController < ApplicationController
 
   def new
     @section=Section.new(:name =>'default', :visible => 'false')
+    @section_count=Section.count + 1
+    puts Section.count + 1
   end
 
   def create
       @section=Section.new(section_params)
+      @Section_count = Section.count
 
             if @section.save
 
               flash[:notice]= "record #{@section.name} saved successfully......"
               redirect_to(:action => 'index')
             else
-
+              @Section_count = Section.count
               render('new')
             end 
   end
 
   def edit
     @section=Section.find(params[:id])
+    @Section_count = Section.count
+    puts @section_count
   end
 
    def update
@@ -41,7 +46,7 @@ class SectionController < ApplicationController
 
               redirect_to(:action => 'show' , :id => @section.id)
             else
-
+              @Section_count = Section.count
               render('new')
             end 
   end
