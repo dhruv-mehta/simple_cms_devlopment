@@ -1,5 +1,9 @@
 
 <% page_title = "subject" %>
+
+<%= link_to(" << back to the menu listing", {:controller => 'access' , :action => 'index'} , :class => '') %>
+
+
 <div calss = "subject index" >
 
 <h2>subjects </h2>
@@ -24,9 +28,13 @@
 <td class="center"><%= status_tag(subject.visible)  %></td>
 <td class="center"><%= subject.pages.size %></td>
 <td class="actions">
+<%= link_to("view pages", {:controller => 'pages'  , :subject_id => subject.id}, :class => 'action show')%>
+
 <%= link_to("Show", {:action => 'show' , :id => subject.id}, :class => 'action show')%>
 <%= link_to("Edit",{:action => 'edit' , :id => subject.id}, :class => 'action edit') %>
 <%= link_to("Delete", {:action => 'delete' , :id => subject.id}, :class => 'action delete') %>
+
+
 </td>
 </tr>
 <% end %>

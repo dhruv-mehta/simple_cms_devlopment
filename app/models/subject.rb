@@ -1,6 +1,7 @@
 class Subject < ActiveRecord::Base
 
-	has_many :pages
+	has_many :pages ,dependent: :destroy
+	acts_as_list
 
 	 validates :name, presence: true
 	 validates_length_of :name , :maximum => 255

@@ -2,6 +2,8 @@ class SubjectsController < ApplicationController
   
   layout "admin"
 
+  before_action :confirm_logged_in
+
   def index
     @subject=Subject.sorted
   end
@@ -66,5 +68,5 @@ class SubjectsController < ApplicationController
 
 
             params.require(:subject).permit(:name, :position , :visible , :created_at)
-  end
+  end 
 end

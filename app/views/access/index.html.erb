@@ -1,0 +1,21 @@
+<% @page_title ="admin menu" %>
+
+<div class="menu">
+	<h2 > Admin Menu:</h2>
+
+	<div class="identity">logged in as :  </div>
+
+	<ul>
+		<li><%= link_to("manage Subjects" , :controller => 'Subjects') %></li>
+
+		<li><%= link_to("manage pages" , :controller => 'pages') %></li>
+		
+		<li><%= link_to("manage sections" , :controller => 'section') %></li>
+		
+		<li><%= link_to("manage Admin user" , :controller => 'admin_user') %></li>
+		
+		<li><%= link_to("Logout" , :controller => 'access/logout') %></li>
+		
+		
+	</ul>
+</div>

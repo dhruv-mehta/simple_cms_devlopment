@@ -4,12 +4,17 @@
 		<%= flash[:notice] %>
 	</div>
  <% end %>
- -->
+ -->	
+ <% @page_title ="Pages" %>
+
+<%= link_to(" << back to the subject listing", {:controller => 'subjects' , :action => 'index' , :subject_id => @subject.id} , :class => 'action new') %>
+
+
 <div calss = "page index" >
 
 <h2>pages </h2>
-<%= link_to("add new page", { :action => 'new'} , :class => 'action new') %>
-<table class = "listing" summary="page list">
+<%= link_to("add new page", { :action => 'new' , :subject_id => @subject.id} , :class => 'action new') %>
+<table class = "listing" summary="page list" border="2" align="center" cellpadding="10" height="100" width="900" style="margin-top:80px;">
 <tr class="header">
 <th>&nbsp;</th>
 <th>Subject id</th>
@@ -28,9 +33,18 @@
 <td><%= page.permalink %></td>
 
 <td class="actions">
-<%= link_to("Show", {:action => 'show' , :id => page.id}, :class => 'action show')%>
-<%= link_to("Edit",{:action => 'edit' , :id => page.id}, :class => 'action edit') %>
-<%= link_to("Delete", {:action => 'delete' , :id => page.id}, :class => 'action delete') %>
+
+
+
+<%= link_to("show sections", {:controller => 'section',:action => '' , :page_id => page.id,  :subject_id => @subject.id}, :class => 'action delete') %>
+
+<%= link_to("Show", {:action => 'show' , :id => page.id , :subject_id => @subject.id}, :class => 'action show')%>
+<%= link_to("Edit",{:action => 'edit' , :id => page.id , :subject_id => @subject.id}, :class => 'action edit')%>
+<%= link_to("Delete", {:action => 'delete' , :id => page.id , :subject_id => @subject.id}, :class => 'action delete') %>
+
+
+
+
 </td>
 </tr>
 <% end %>

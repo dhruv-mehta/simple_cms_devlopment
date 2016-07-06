@@ -1,5 +1,30 @@
 Rails.application.routes.draw do
 
+  get 'public/index'
+
+  get 'public/show'
+
+ 
+
+  # get 'admin_users/index'
+
+  # get 'admin_users/new'
+
+  # get 'admin_users/create'
+
+  # get 'admin_users/edit'
+
+  # get 'admin_users/update'
+
+  # get 'admin_users/delete'
+
+  # get 'admin_users/destroy'
+
+  # get 'admin_user/index'
+  # get 'access/index'
+
+  get 'admin' , :to => "access#index"
+
   # get 'section/index'
 
   # get 'section/show'
@@ -56,7 +81,8 @@ Rails.application.routes.draw do
 
   # get 'subjects/delete'
 
-  root 'demo#index'
+  root 'public#index'
+  get 'show/:permalink' , :to => 'public#show'
   #get 'demo/index'
   match ':controller(/:action(/:id))' , :via => [:get, :post]
 

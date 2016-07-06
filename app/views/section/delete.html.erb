@@ -1,7 +1,7 @@
 <%= link_to("<<back to the list", { :action => 'index'}, :class => 'back-link') %>
 <div class="section delete">
 
-<%= form_for( :section , :url => {:action => 'destroy', :id => @section.id}) do |f| %>
+<%= form_for( :section , :url => {:action => 'destroy', :id => @section.id , :page_id => @page.id}) do |f| %>
 <p>are you sure you want to permently delete this object ??????</p>
 <p class="reference-name"><%= @section.name %></p>
 

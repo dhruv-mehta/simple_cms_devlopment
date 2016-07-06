@@ -1,0 +1,42 @@
+
+
+
+<% page_title = "users" %>
+<div calss = "subject index" >
+
+<h2>users </h2>
+ 
+<%=  %>
+<div><%= pluralize(@adminuser.size,'users')%> 	Found
+<div><%= link_to( image_tag('plus_sign.png' , :size => '22*22' , :alt => '+') + " Add new user", { :action => 'new'} , :class => 'action new') %>
+</div>
+</div>
+<table class = "listing" summary="subject list" border="2" align="center" cellpadding="10" height="100" width="800" style="margin-top:80px;">
+<tr class="header">
+<th>First name</th>
+<th>last Name</th>
+<th>email</th>
+<th>User Name</th>
+<TH>actions</TH>
+</tr>
+<% @adminuser.each  do |user| %>
+<tr>
+
+<td><%= user.first_name %></td>
+<td><%= user.last_name %></td>
+
+<td><%= user.email %></td>
+
+<td><%= user.username %></td>
+
+<td class="actions">
+<%= link_to("Show", {:action => 'show' , :id => user.id} ,     :class => 'action show')%>
+<%= link_to("Edit",{:action => 'edit', :id => user.id} , :class => 'action edit') %>
+<%= link_to("Delete", {:action => 'delete', :id => user.id} ,  :class => 'action delete') %>
+<%= link_to("change password", {:action => 'changepass' , :id => user.id}, :class => 'action delete') %>
+
+</td>
+</tr>
+<% end %>
+</table>
+</div>

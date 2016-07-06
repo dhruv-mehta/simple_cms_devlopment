@@ -2,13 +2,13 @@
 <div class="subject edit">
 <h2>update Subject</h2>
 	
-<%= form_for( :subject , :url => {:action => 'update' , :id => @subject.id})   do |f| %>
+<%= form_for(@adminuser , :url => {:action => 'update' , :id => @adminuser.id }, :method => :post ) do |f| %>
 
 
 <%= render(:partial => "form", :locals => {:f =>f}) %>
  
 <div class="form-buttons">
-		<%= submit_tag("update  subject") %>
+		<%= submit_tag("update  adminuser") %>
 </div>
 <% end %>
 </div>

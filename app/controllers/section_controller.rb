@@ -1,9 +1,13 @@
 class SectionController < ApplicationController
+
    
   layout "admin"
 
+before_action :confirm_logged_in
+before_action :find_pages
   def index
-    @section=Section.sorted
+     @section = Section.where(:page_id => @page.id).sorted
+        # @section=Section.sorted
   end
 
   def show
@@ -11,19 +15,20 @@ class SectionController < ApplicationController
   end
 
   def new
-    @section=Section.new(:name =>'default', :visible => 'false')
+    @section=Section.new(:name =>'default', :visible => 'false' , :page_id => @page.id)
     @section_count=Section.count + 1
-    puts Section.count + 1
+    @pages = Page.order('position ASC')
   end
 
   def create
-      @section=Section.new(section_params)
+      @section=Section.new(section_params , :page_id => @page.id)
       @section_count = Section.count
+       @pages = Page.order('position ASC')
 
             if @section.save
 
               flash[:notice]= "record #{@section.name} saved successfully......"
-              redirect_to(:action => 'index')
+              redirect_to(:action => 'index' , :page_id => @page.id)
             else
               @section_count = Section.count
               render('new')
@@ -33,7 +38,8 @@ class SectionController < ApplicationController
   def edit
     @section=Section.find(params[:id])
     @section_count = Section.count
-    puts @section_count
+ 
+     @pages = Page.order('position ASC')
   end
 
    def update
@@ -44,9 +50,10 @@ class SectionController < ApplicationController
 
               flash[:notice]= "record #{@section.name} updated successfully......."
 
-              redirect_to(:action => 'show' , :id => @section.id)
+              redirect_to(:action => 'show' , :id => @section.id , :page_id => @page.id)
             else
               @Section_count = Section.count
+               @pages = Page.order('position ASC')
               render('new')
             end 
   end
@@ -60,7 +67,7 @@ class SectionController < ApplicationController
     @section=Section.find(params[:id])
     @section.destroy
     flash[:notice]= "record deleted successfully......."
-    redirect_to(:action => 'index')
+    redirect_to(:action => 'index' , :page_id => @page.id)
   end
 
   private 
@@ -69,5 +76,12 @@ class SectionController < ApplicationController
 
 
             params.require(:section).permit(:page_id  , :name, :position , :visible , :content_type, :content)
+  end
+
+
+  def find_pages
+    if params[:page_id]
+      @page =Page.find(params[:page_id])
+    end
   end
 end
